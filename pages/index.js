@@ -93,8 +93,7 @@ const CustomTooltip = withStyles(theme => ({
 
 export async function getServerSideProps() {
   const res = await fetch(page0);
-  const enc = await res.text();
-  const getjson = await js64(enc);
+  const getjson = await res.json();
   return { props: { getjson } };
 }
 
@@ -113,8 +112,7 @@ export default function Home({ getjson }) {
       const select = loading.current;
       select.style.display = 'initial';
       const res = await fetch(url);
-      const enc = await res.text();
-      const newJson = await js64(enc);
+      const newJson = await res.json();
       linkstorage.push(url);
       jsonstorage.push(newJson);
       dataNew(newJson);
