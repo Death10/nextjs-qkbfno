@@ -91,7 +91,7 @@ const CustomTooltip = withStyles(theme => ({
   }
 }))(Tooltip);
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(page0);
   const getjson = await res.json();
   return { props: { getjson } };
